@@ -6,7 +6,7 @@ interface IHeroArt {}
 const HeroArt: React.FC<IHeroArt> = () => {
   return (
     <motion.div className="col-span-1 flex justify-center my-auto items-center h-[80%]  overflow-hidden pt-10 relative">
-      <div className="absolute [&:xhover~.hero-art-frame_.hero-art-image]:scale-[1] bottom-0 w-full h-[400px] z-20  bg-gradient-to-t from-black  to-transparent to-170% from-10%" />
+      <div className="absolute [&:xhover~.hero-art-frame_.hero-art-image]:scale-[1] bottom-0 w-full h-[400px] z-20  bg-gradient-to-t from-black  to-transparent to-130% from-30%" />
       <motion.div
         initial={{ y: "500px", opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}

@@ -1,5 +1,6 @@
 "use client";
 
+import Features from "@/components/molecules/Features";
 import Hero from "@/components/molecules/Hero";
 import Intro from "@/components/molecules/Intro";
 import NavBar from "@/components/molecules/NavBar";
@@ -13,6 +14,7 @@ export default function Home() {
       <Hero />
       <SponsorsBanner />
       <Intro />
+      <Features/>
     </Container>
   );
 }

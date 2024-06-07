@@ -1,18 +1,33 @@
-import GlobalStore from "@/store/Global";
 import Link from "next/link";
+import { tl } from "@/utils/helpers/_tailwind";
+import { usePathname } from "next/navigation";
 import { Fragment, ReactNode, useMemo } from "react";
 
 interface INavListItem {
   label: string | ReactNode;
   target?: string;
+  matches?: string[];
 }
 
-const NavListItem: React.FC<INavListItem> = ({ label, target = "#" }) => {
+const NavListItem: React.FC<INavListItem> = ({
+  label,
+  target = "#",
+  matches = []
+}) => {
+  const pathname = usePathname();
+  const isActive = useMemo(
+    () => pathname == target || matches.includes(pathname),
+    [pathname, target]
+  );
+
   return (
     <div className="relative">
       <Link
         href={target}
-        className="[&:hover~span]:w-full text-slate-200/70 hover:text-slate-200 transition-all"
+        className={`${tl(
+          isActive,
+          "active"
+        )}   text-slate-200/70 transition-all [&.active]:text-slate-200 [&.active~span]:w-full hover:text-slate-200 [&:hover~span]:w-full`}
       >
         {label}
       </Link>
@@ -24,14 +39,34 @@ const NavListItem: React.FC<INavListItem> = ({ label, target = "#" }) => {
 interface INavList {}
 
 const NavList: React.FC<INavList> = () => {
-  const { navActive } = GlobalStore.useState();
-  const navList = useMemo(() => ["Home", "Features", "Pricing", "FAQs"], []);
+  const navList = useMemo(
+    () => [
+      {
+        label: "Home",
+        target: "/",
+        matches: ["/home", "/"]
+      },
+      {
+        label: "Features",
+        target: "/features"
+      },
+      {
+        label: "Pricing",
+        target: "/pricing"
+      },
+      {
+        label: "FAQs",
+        target: "/faq"
+      }
+    ],
+    []
+  );
 
   return (
     <div className="flex items-center h-full gap-8 ml-20 text-sm ">
       {navList.map((_, key) => (
         <Fragment key={key}>
-          <NavListItem label={_} />
+          <NavListItem {..._} />
         </Fragment>
       ))}
     </div>
