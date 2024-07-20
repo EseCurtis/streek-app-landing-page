@@ -63,7 +63,13 @@ const KeyFeatureItem: React.FC<IKeyFeatureItem> = ({
       >
         <div className={`flex items-center gap-5 `}>
           <div className="col-span-2">
-            <div className={`${itemIsActive ? "opacity-60" : "opacity-100"} text-xl`}>{feature.icon}</div>
+            <div
+              className={`${
+                itemIsActive ? "opacity-60" : "opacity-100"
+              } text-xl`}
+            >
+              {feature.icon}
+            </div>
           </div>
           <p className="whitespace-nowrap text-lg font-x">{feature.title}</p>
           <div
@@ -93,6 +99,7 @@ const KeyFeatureItem: React.FC<IKeyFeatureItem> = ({
 const KeyFeatures: React.FC<IKeyFeatures> = ({ emulatorRef, setDisplay }) => {
   const [activeAccordion, setActiveAccordion] = useState<number>(0);
   const [containerHeight, setContainerHeight] = useState<number>(0);
+  const [hasFollowedDirectives, setHasFollowedDirectives] = useState(false);
   const keyFeatures = useMemo(() => _keyFeatures || [], []);
 
   useEffect(() => {
@@ -100,21 +107,37 @@ const KeyFeatures: React.FC<IKeyFeatures> = ({ emulatorRef, setDisplay }) => {
   }, [emulatorRef?.current?.offsetHeight]);
 
   useEffect(() => {
-    if(keyFeatures ) {
+    if (keyFeatures) {
       const activeKeyFeature = keyFeatures[activeAccordion] || keyFeatures[0];
       const displayImageURL = activeKeyFeature?.displayImageURL;
       displayImageURL && setDisplay(displayImageURL);
-
     }
   }, [activeAccordion]);
 
+  const goNext = () => {
+    setHasFollowedDirectives(true);
+    if (activeAccordion >= (keyFeatures.length -1)) {
+      setActiveAccordion(0);
+    } else {
+      setActiveAccordion(activeAccordion + 1);
+    }
+  };
+
   return (
     <div
-      className="col-span-2 gap-3 pt-10 pb-20"
+      className="col-span-2 gap-3 pt-10 pb-20 relative z-20 max-w-screen overflow-x-clip"
       style={{
         height: containerHeight
       }}
     >
+      <div
+        onClick={goNext}
+        className="absolute -top-[40vh] -left-12 w-screen h-[40vh]  md:hidden flex items-center justify-center bg-black/10"
+      >
+        {!hasFollowedDirectives && (
+          <p className="animate-pulse">Click to see next</p>
+        )}
+      </div>
       <div className="h-full flex flex-col col-span-2 w-full  gap-5">
         {keyFeatures.map((feature, index) => (
           <KeyFeatureItem
