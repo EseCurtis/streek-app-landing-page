@@ -2,6 +2,7 @@ import Link from "next/link";
 import { tl } from "@/utils/helpers/_tailwind";
 import { usePathname } from "next/navigation";
 import { Fragment, ReactNode, useMemo } from "react";
+import GlobalStore from "@/store/Global";
 
 interface INavListItem {
   label: string | ReactNode;
@@ -39,6 +40,7 @@ const NavListItem: React.FC<INavListItem> = ({
 interface INavList {}
 
 const NavList: React.FC<INavList> = () => {
+  const mobileNavActive = GlobalStore.useState((s) => s.mobileNavActive);
   const navList = useMemo(
     () => [
       {
@@ -63,7 +65,12 @@ const NavList: React.FC<INavList> = () => {
   );
 
   return (
-    <div className="flex items-center h-full gap-8 ml-20 text-sm ">
+    <div
+      className={`flex transition-all md:items-center md:h-full gap-8 ml-20 text-sm fixed top-20 right-0 w-auto min-w-[40vw] h-auto md:bg-transparent bg-black/90 md:static p-5 md:p-0 md:flex-row flex-col ${tl(
+        !mobileNavActive,
+        "!-right-[100vw]"
+      )}`}
+    >
       {navList.map((_, key) => (
         <Fragment key={key}>
           <NavListItem {..._} />

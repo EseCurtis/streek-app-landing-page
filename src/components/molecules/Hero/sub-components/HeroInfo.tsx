@@ -8,12 +8,12 @@ interface IHeroInfo {}
 
 const HeroInfo: React.FC<IHeroInfo> = () => {
   return (
-    <div className="col-span-2 flex flex-col h-full justify-center gap-7 relative z-20">
+    <div className="col-span-2 flex flex-col h-full justify-center md:gap-7 gap-4 relative z-20  items-centder md:items-start">
       <motion.h1
         initial={{ x: "-500px", opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
         transition={{ ease: "easeOut", duration: 0.6 }}
-        className="text-6xl font-bold leading-tight "
+        className="md:text-6xl font-bold leading-tight text-centxer md:text-left text-5xl "
       >
         Embrace Freedom, <br />
         Break Persistent <br />
@@ -24,7 +24,7 @@ const HeroInfo: React.FC<IHeroInfo> = () => {
         initial={{ x: "-500px", opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
         transition={{ ease: "easeOut", duration: 0.67, delay: 0.11 }}
-        className="text-slate-200/70 max-w-[70%] leading-[2rem] text-sm"
+        className="text-slate-200/70 md:max-w-[70%] md:leading-[2rem] leading-[1.7rem] text-sm md:text-sm  text-cenxter md:text-left "
       >
         Streek is a revolutionary app designed to help you manage and overcome
         your habits. With its intuitive and user-friendly interface, Streek
@@ -35,7 +35,7 @@ const HeroInfo: React.FC<IHeroInfo> = () => {
         initial={{ scale: "-500px", opacity: 0 }}
         animate={{ scale: 0, opacity: 1 }}
         transition={{ ease: "easeOut", duration: 2.4 }}
-        className="flex gap-4 items-center"
+        className="flex gap-4 items-center mt-4 md:mt-0"
       >
         <IconBubble className="!w-[3rem] !h-[3rem]">
           <FaGooglePlay className="text-xs" />

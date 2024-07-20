@@ -11,7 +11,7 @@ interface IEmulator {
 
 const Emulator: React.FC<IEmulator> = ({
   emulatorRef,
-  src = "/screenshot.jpg",
+  src = "/slick-interface.jpg",
   className = ""
 }) => {
   const _emulatorRef = useRef<HTMLDivElement>(null);

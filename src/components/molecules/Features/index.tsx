@@ -10,9 +10,9 @@ const Features: React.FC<IFeatures> = () => {
   const [displayImage, setDisplayImage] = useState<string>("/screenshot.jpg");
 
   return (
-    <div className="format py-10 pt-20 ">
-      <div className="grid grid-cols-4 px-7 gap-10">
-        <div className="col-span-2 p-10 !pt-0">
+    <div className="format py-10 md:pt-20 pt-7 ">
+      <div className="md:grid md:grid-cols-4 px-7 gap-10">
+        <div className="col-span-2 p-10 !pt-0 fixed -z-30 md:flex md:static h-screen md:hd-auto">
           <Emulator
             src={"/images/screenshots"+displayImage}
             emulatorRef={emulatorRef}

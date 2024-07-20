@@ -11,12 +11,15 @@
   "dependencies": {
     "cmm-util": "^1.0.3",
     "framer-motion": "^11.2.4",
+    "infinite-react-carousel": "^1.2.11",
     "next": "14.2.3",
     "pull-persist": "^1.0.5",
     "pullstate": "^1.25.0",
     "react": "^18",
     "react-dom": "^18",
     "react-icons": "^5.2.1",
+    "react-simply-carousel": "^9.1.4",
+    "sharp": "^0.33.4",
     "super-react-hooks": "^1.0.2"
   },
   "devDependencies": {

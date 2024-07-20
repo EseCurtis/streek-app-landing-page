@@ -10,7 +10,7 @@ const AdaptationInfoContainer: React.FC<IAdaptationInfoContainer> = ({
 }) => {
   return (
     <motion.div
-      className="grid grid-cols-3 gap-5 pt-5"
+      className="md:grid md:grid-cols-x3 gap-5 pt-5 w-full"
       initial={{ opacity: 0.2 }}
       whileInView={{ opacity: 1 }}
       transition={{

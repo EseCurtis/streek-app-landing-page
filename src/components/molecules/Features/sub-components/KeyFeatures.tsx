@@ -53,8 +53,8 @@ const KeyFeatureItem: React.FC<IKeyFeatureItem> = ({
         onClick={() => setActiveAccordion(index)}
         className={`${
           itemIsActive
-            ? "gap-3 !bg-slate-300/5 pt-8 !border-slate-300/5"
-            : "justify-center cursor-pointer"
+            ? "gap-3 !bg-gradient-to-b from-slate-300/5 pt-8 !border-slate-300/5"
+            : "justify-center cursor-pointer "
         } transitsion-all !transition-[all_2s] flex flex-col justify-start p-5 px-7 text-white hover:opacity-70 border hover:bg-slate-400/5 border-slate-300/10 rounded-2xl`}
         style={{
           height: actualHeight,
@@ -63,15 +63,15 @@ const KeyFeatureItem: React.FC<IKeyFeatureItem> = ({
       >
         <div className={`flex items-center gap-5 `}>
           <div className="col-span-2">
-            <div className="text-xl">{feature.icon}</div>
+            <div className={`${itemIsActive ? "opacity-60" : "opacity-100"} text-xl`}>{feature.icon}</div>
           </div>
           <p className="whitespace-nowrap text-lg font-x">{feature.title}</p>
-          {/* <div
-            className="text-xs cursor-pointer"
+          <div
+            className="text-xs cursor-pointer md:hidden float-right"
             onClick={() => setActiveAccordion(index)}
           >
             {!itemIsActive ? <SlArrowRight /> : ""}
-          </div> */}
+          </div>
         </div>
         {itemIsActive && (
           <motion.div

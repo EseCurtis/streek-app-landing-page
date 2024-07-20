@@ -12,13 +12,13 @@ export const _keyFeatures = [
     },
     {
         icon: <SlGraph/>,
-        title: "Point Grading System",
+        title: "Grading System",
         displayImageURL: "/point-grading.jpg",
         description: `Our point grading system provides a comprehensive evaluation of your progress. It's designed to motivate you to stick with your journey of breaking habits. By assigning points to your actions, it turns habit tracking into a game, making the process more engaging and fun.`
     },
     {
         icon: <SlEmotsmile/>,
-        title: "Companionship and AI Management",
+        title: "AI Companionship",
         displayImageURL: "/companion.jpg",
         description: "Experience companionship with our AI. Get daily guidance and personalized support to overcome urges and build healthier habits. Our AI companion is always there for you, providing you with the encouragement and advice you need when you need it the most."
     },

@@ -18,7 +18,7 @@ const InfoTips: React.FC<IInfoTips> = () => {
       </InfoTip>
 
       <InfoTip>
-        <span className="text-slate-200/70 text-sm flex w-full justify-end items-center gap-2 hover:underline cursor-pointer">
+        <span className="text-accent md:text-slate-200/70 text-sm flex w-full justify-end items-center gap-2 hover:underline  cursor-pointer">
           Discover all adaptations <MdArrowOutward />
         </span>
       </InfoTip>

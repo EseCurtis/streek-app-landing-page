@@ -8,7 +8,7 @@ const NavBrand: React.FC<INavBrand> = () => {
       <div className="aspect-square w-7 h-7 pr-1">
         <Brand />
       </div>
-      <h4 className="font-bold text-lg flex items-start pr-">StreekApp </h4>
+      <h4 className="font-bold text-lg hidden items-start lg:flex md:flex">StreekApp </h4>
       {/* <div className="h-full py-1 flex items-end">
           <span className="w-1 h-1 bg-accent block rounded-full"></span>
         </div> */}

@@ -7,8 +7,8 @@ interface IHeroContainer {
 
 const HeroContainer: React.FC<IHeroContainer> = ({ children }) => {
   return (
-    <div className="h-screen max-h-[900px] aspect-video pt-[3rem] flex  flex-col format overflow-x-clip relative bg-black ">
-      <div className="grid grid-cols-3 w-full px-7 relative -h-screen mb- z-20">
+    <div className="md:min-h-screen lg:max-h-[900px] lg:aspect-video pt-[3rem] flex  flex-col format overflow-x-clip relative bg-black ">
+      <div className="grid lg:grid-cols-3 w-full px-7 relative -h-screen mb- z-20  grid-cols-2 pt-20">
         {children}
       </div>
 
