@@ -1,8 +1,9 @@
-import { FaGooglePlay, FaAppStore } from "react-icons/fa";
-import { IconBubble } from "../../NavBar/sub-components/NavMisc";
-import cmm from "cmm-util";
+import { external_urls } from "@/utils/constants";
 import { motion } from "framer-motion";
+import Link from "next/link";
+import { FaAppStore, FaGooglePlay } from "react-icons/fa";
 import { MdArrowOutward } from "react-icons/md";
+import { IconBubble } from "../../NavBar/sub-components/NavMisc";
 
 interface IHeroInfo {}
 
@@ -37,16 +38,27 @@ const HeroInfo: React.FC<IHeroInfo> = () => {
         transition={{ ease: "easeOut", duration: 2.4 }}
         className="flex gap-4 items-center mt-4 md:mt-0"
       >
-        <IconBubble className="!w-[3rem] !h-[3rem]">
+        <IconBubble
+          href={external_urls.playstore!}
+          store
+          className="!w-[3rem] !h-[3rem] aspect-square"
+        >
           <FaGooglePlay className="text-xs" />
         </IconBubble>
-        <IconBubble className="!w-[3rem] !h-[3rem]">
+        <IconBubble
+          href={external_urls.appstore!}
+          store
+          className="!w-[3rem] !h-[3rem] aspect-square"
+        >
           <FaAppStore />
         </IconBubble>
 
-        <p className="ml-3 text-accent flex items-center gap-1">
+        <Link
+          href={external_urls.autodetect_store()}
+          className="ml-3 text-accent flex items-center gap-1"
+        >
           Download Now <MdArrowOutward />
-        </p>
+        </Link>
       </motion.div>
     </div>
   );

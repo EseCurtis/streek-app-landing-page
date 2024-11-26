@@ -1,5 +1,6 @@
-import { ReactNode } from "react";
+import { FadedTopoGraphicBg } from "@/components/common/topographic-bg";
 import { motion } from "framer-motion";
+import { ReactNode } from "react";
 
 interface IHeroContainer {
   children?: ReactNode;
@@ -7,7 +8,14 @@ interface IHeroContainer {
 
 const HeroContainer: React.FC<IHeroContainer> = ({ children }) => {
   return (
-    <div className="md:min-h-screen lg:max-h-[900px] lg:aspect-video pt-[3rem] flex  flex-col format overflow-x-clip relative bg-black ">
+    <div className=" md:min-h-screen lg:max-h-[900px] lg:aspect-video pt-[3rem] flex  flex-col format overflow-x-clip relative  ">
+      <FadedTopoGraphicBg
+        className={"h-5/6 "}
+        opacity={0.08}
+        color={"var(--accent-color)"}
+        animate
+      />
+
       <div className="grid lg:grid-cols-3 w-full px-7 relative -h-screen mb- z-20  grid-cols-2 pt-20">
         {children}
       </div>
@@ -16,9 +24,9 @@ const HeroContainer: React.FC<IHeroContainer> = ({ children }) => {
         initial={{ scale: 1.2 }}
         animate={{ scale: 1 }}
         transition={{ duration: 1 }}
-        className="bg-red-500 opacity-50 absolute -top-40 left-0 w-full h-full"
+        className=" opacity-50 absolute -top-40 left-0 w-full h-full"
         style={{
-          background: "url(/images/timon-studler-BIk2ANMmNz4-unsplash.png)",
+          //background: "url(/images/timon-studler-BIk2ANMmNz4-unsplash.png)",
           backgroundSize: "cover",
           backgroundPosition: "center"
         }}

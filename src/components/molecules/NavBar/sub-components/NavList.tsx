@@ -1,8 +1,8 @@
-import Link from "next/link";
-import { tl } from "@/utils/helpers/_tailwind";
-import { usePathname } from "next/navigation";
-import { Fragment, ReactNode, useMemo } from "react";
 import GlobalStore from "@/store/Global";
+import { tl } from "@/utils/helpers/_tailwind";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { Fragment, ReactNode, useEffect, useMemo, useState } from "react";
 
 interface INavListItem {
   label: string | ReactNode;
@@ -15,15 +15,53 @@ const NavListItem: React.FC<INavListItem> = ({
   target = "#",
   matches = []
 }) => {
+  const { activeRoute } = GlobalStore.useState((s) => s);
+  const [hash, setHash] = useState("");
   const pathname = usePathname();
   const isActive = useMemo(
-    () => pathname == target || matches.includes(pathname),
-    [pathname, target]
+    () =>
+      pathname == target ||
+      !!matches.find((match) => {
+        return pathname === match || hash == match;
+      }),
+    [matches, pathname, target, hash]
   );
+
+  useEffect(() => {
+    // Check if the window object is available
+    if (typeof window !== "undefined") {
+      // Get the initial hash
+      setHash(window.location.hash);
+
+      // Optional: Update the hash when it changes
+      const onHashChange = () => {
+        setHash(window.location.hash);
+      };
+
+      window.addEventListener("hashchange", onHashChange);
+      window.addEventListener("onpopstate", onHashChange);
+
+      // Cleanup the event listener
+      return () => {
+        window.removeEventListener("hashchange", onHashChange);
+        window.removeEventListener("onpopstate", onHashChange);
+      };
+    }
+  }, []);
+
+  useEffect(() => {
+    // Update the hash when the router's path changes
+    setHash(activeRoute.split("#")[1]);
+  }, [activeRoute]);
 
   return (
     <div className="relative">
       <Link
+        onClick={() => {
+          GlobalStore.update((s) => {
+            s.activeRoute = target;
+          });
+        }}
         href={target}
         className={`${tl(
           isActive,
@@ -50,15 +88,18 @@ const NavList: React.FC<INavList> = () => {
       },
       {
         label: "Features",
-        target: "/features"
+        target: "#features",
+        matches: ["features"]
       },
       {
         label: "Pricing",
-        target: "/pricing"
+        target: "#pricing",
+        matches: ["pricing"]
       },
       {
         label: "FAQs",
-        target: "/faq"
+        target: "#faq",
+        matches: ["faq"]
       }
     ],
     []

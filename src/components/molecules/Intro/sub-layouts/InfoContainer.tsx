@@ -1,13 +1,15 @@
-import { ReactNode } from "react";
 import { motion } from "framer-motion";
+import { ReactNode } from "react";
 
 interface IInfoContainer {
   children: ReactNode;
+  title?: string;
+  id?: string;
 }
 
-const InfoContainer: React.FC<IInfoContainer> = ({ children }) => {
+const InfoContainer: React.FC<IInfoContainer> = ({ children, title, id }) => {
   return (
-    <div className="format py-10 pt-20">
+    <div className="format py-10 pt-20" id={id}>
       <div className="flex flex-col bg-accxent rounded-3xl gap-5 text-blacxk">
         <motion.h3
           initial={{ opacity: 0.2 }}
@@ -18,7 +20,7 @@ const InfoContainer: React.FC<IInfoContainer> = ({ children }) => {
           }}
           className="text-5xl font-semibold"
         >
-          Different Adaptations
+          {title || "Different Adaptations"}
         </motion.h3>
         {children}
       </div>

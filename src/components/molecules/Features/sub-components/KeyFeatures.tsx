@@ -1,17 +1,15 @@
-import { tl } from "@/utils/helpers/_tailwind";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import React, {
-  useMemo,
-  Fragment,
-  SetStateAction,
   Dispatch,
-  useState,
+  Fragment,
   RefObject,
-  useEffect
+  SetStateAction,
+  useEffect,
+  useMemo,
+  useState
 } from "react";
+import { SlArrowRight } from "react-icons/sl";
 import { _keyFeatures } from "../constants";
-import { useRemount } from "super-react-hooks";
-import { SlArrowDown, SlArrowRight } from "react-icons/sl";
 
 interface IKeyFeatures {
   emulatorRef: RefObject<HTMLDivElement>;
@@ -53,8 +51,8 @@ const KeyFeatureItem: React.FC<IKeyFeatureItem> = ({
         onClick={() => setActiveAccordion(index)}
         className={`${
           itemIsActive
-            ? "gap-3 !bg-gradient-to-b from-slate-300/5 pt-8 !border-slate-300/5"
-            : "justify-center cursor-pointer "
+            ? "gap-3  !bg-transparent !bg-gradient-to-b from-slate-300/5 pt-8 !border-slate-300/5"
+            : "justify-center cursor-pointer hidden md:flex "
         } transitsion-all !transition-[all_2s] flex flex-col justify-start p-5 px-7 text-white hover:opacity-70 border hover:bg-slate-400/5 border-slate-300/10 rounded-2xl`}
         style={{
           height: actualHeight,
@@ -104,7 +102,7 @@ const KeyFeatures: React.FC<IKeyFeatures> = ({ emulatorRef, setDisplay }) => {
 
   useEffect(() => {
     setContainerHeight(emulatorRef?.current?.offsetHeight || 0);
-  }, [emulatorRef?.current?.offsetHeight]);
+  }, [emulatorRef, emulatorRef?.current?.offsetHeight]);
 
   useEffect(() => {
     if (keyFeatures) {
@@ -112,7 +110,7 @@ const KeyFeatures: React.FC<IKeyFeatures> = ({ emulatorRef, setDisplay }) => {
       const displayImageURL = activeKeyFeature?.displayImageURL;
       displayImageURL && setDisplay(displayImageURL);
     }
-  }, [activeAccordion]);
+  }, [activeAccordion, keyFeatures, setDisplay]);
 
   const goNext = () => {
     setHasFollowedDirectives(true);
@@ -125,9 +123,11 @@ const KeyFeatures: React.FC<IKeyFeatures> = ({ emulatorRef, setDisplay }) => {
 
   return (
     <div
-      className="col-span-2 gap-3 pt-10 pb-20 relative z-20 max-w-screen overflow-x-clip"
+      className="col-span-2 gap-3 pt-10 pb-20 relative z-20 max-w-screen overflow-x-clip h-auto md:h-[var(--height)]"
       style={{
-        height: containerHeight
+
+        //@ts-ignore
+        "--height": containerHeight
       }}
     >
       <div

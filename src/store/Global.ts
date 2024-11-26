@@ -1,14 +1,15 @@
-import PullPersistor from "pull-persist";
 import { Store } from "pullstate";
 
 interface IGlobalStore {
     navActive: boolean;
     mobileNavActive: boolean;
+    activeRoute: string;
 }
 
 const GlobalStore = new Store<IGlobalStore>({
     navActive: false,
-    mobileNavActive: false
+    mobileNavActive: false,
+    activeRoute: ""
 });
 
 

@@ -19,9 +19,9 @@ const Emulator: React.FC<IEmulator> = ({
 
   return (
     <motion.div
-      ref={emulatorRef ||  _emulatorRef}
+      ref={emulatorRef}
       key={key}
-      className="col-span-1 flex justify-center my-auto items-center h-[100%]  overflow-hidden pt-10 relative"
+      className="col-span-1 flex justify-center my-auto items-center h-[100%]  overflow-hidden pt-10 relative w-full"
     >
       <div
         className={`absolute [&:xhover~.hero-art-frame_.hero-art-image]:scale-[1] bottom-0 w-full h-[400px] z-20  bg-gradient-to-t   to-transparent to-170% from-10%  ${className}`}
