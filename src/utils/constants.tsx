@@ -1,6 +1,6 @@
 export const external_urls = {
   appstore: null,
-  playstore: null,
+  playstore: `https://play.google.com/store/apps/details?id=com.streek.dezrektech&pcampaignid=web_share`,
   autodetect_store: () => ""
 };
 
