@@ -36,6 +36,7 @@ const NavListItem: React.FC<INavListItem> = ({
       // Optional: Update the hash when it changes
       const onHashChange = () => {
         setHash(window.location.hash);
+        window.history.pushState({}, "", window.location.hash);
       };
 
       window.addEventListener("hashchange", onHashChange);
