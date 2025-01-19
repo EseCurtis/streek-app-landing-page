@@ -8,6 +8,7 @@ import React, {
   useMemo,
   useState
 } from "react";
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { SlArrowRight } from "react-icons/sl";
 import { _keyFeatures } from "../constants";
 
@@ -32,7 +33,7 @@ const KeyFeatureItem: React.FC<IKeyFeatureItem> = ({
   activeAccordion,
   setActiveAccordion
 }) => {
-  const activeHeight = useMemo(() => (3 / 7) * 100, []);
+  const activeHeight = useMemo(() => (2.5 / 7) * 100, []);
   const inactiveHeight = useMemo(() => (1 / 7) * 100, []);
   const itemIsActive = useMemo(
     () => index === activeAccordion,
@@ -79,7 +80,7 @@ const KeyFeatureItem: React.FC<IKeyFeatureItem> = ({
         </div>
         {itemIsActive && (
           <motion.div
-            className=" py-3 overflow-hidden px-8 mx-2 relative h-auto  mb-auto flex text-slate-200/80 leading-[1.7rem] text-sm"
+            className=" py-3 overflow-hidden px-8 mx-2 relative h-auto  mb-auto flex text-slate-200/80 leading-[1.7rem] text-sm  overflow-y-scroll"
             style={{
               height: itemIsActive ? "auto" : "0%",
               maxHeight: "90%"
@@ -114,29 +115,33 @@ const KeyFeatures: React.FC<IKeyFeatures> = ({ emulatorRef, setDisplay }) => {
 
   const goNext = () => {
     setHasFollowedDirectives(true);
-    if (activeAccordion >= (keyFeatures.length -1)) {
-      setActiveAccordion(0);
-    } else {
-      setActiveAccordion(activeAccordion + 1);
-    }
+    setActiveAccordion((prev) =>
+      prev >= keyFeatures.length - 1 ? 0 : prev + 1
+    );
+  };
+
+  const goPrev = () => {
+    setHasFollowedDirectives(true);
+    setActiveAccordion((prev) =>
+      prev <= 0 ? keyFeatures.length - 1 : prev - 1
+    );
   };
 
   return (
     <div
-      className="col-span-2 gap-3 pt-10 pb-20 relative z-20 max-w-screen overflow-x-clip h-auto md:h-[var(--height)]"
+      className="col-span-2  gap-3 pt-10 pb-20 relative z-20 max-w-screen overflow-x-clip h-auto md:h-[var(--height)] sm:overflow-y-scroll"
       style={{
-
         //@ts-ignore
         "--height": containerHeight
       }}
     >
-      <div
-        onClick={goNext}
-        className="absolute -top-[40vh] -left-12 w-screen h-[40vh]  md:hidden flex items-center justify-center bg-black/10"
-      >
-        {!hasFollowedDirectives && (
-          <p className="animate-pulse">Click to see next</p>
-        )}
+      <div className="absolute -top-[40vh] -left-[50%] translate-x-[50%] w-full h-[40vh]  md:hidden flex items-center justify-between">
+        <div className="text-2xl p-3 text-white" onClick={goNext}>
+          <FaChevronLeft />
+        </div>
+        <div className="text-2xl p-3 text-white" onClick={goPrev}>
+          <FaChevronRight />
+        </div>
       </div>
       <div className="h-full flex flex-col col-span-2 w-full  gap-5">
         {keyFeatures.map((feature, index) => (

@@ -1,3 +1,5 @@
+import { external_urls } from "@/utils/constants";
+import Link from "next/link";
 import { MdArrowOutward } from "react-icons/md";
 import InfoTip from "../atoms/InfoTip";
 
@@ -18,9 +20,13 @@ const InfoTips: React.FC<IInfoTips> = () => {
       </InfoTip>
 
       <InfoTip>
-        <span className="text-accent md:text-slate-200/70 text-sm flex w-full justify-end items-center gap-2 hover:underline  cursor-pointer">
+        <Link
+          href={external_urls.autodetect_store()}
+          target="_blank"
+          className="text-accent md:text-slate-200/70 text-sm flex w-full justify-end items-center gap-2 hover:underline  cursor-pointer"
+        >
           Discover all adaptations <MdArrowOutward />
-        </span>
+        </Link>
       </InfoTip>
     </>
   );

@@ -55,6 +55,7 @@ const HeroInfo: React.FC<IHeroInfo> = () => {
 
         <Link
           href={external_urls.autodetect_store()}
+          target="_blank"
           className="ml-3 text-accent flex items-center gap-1"
         >
           Download Now <MdArrowOutward />

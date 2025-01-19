@@ -22,6 +22,8 @@
 body {
   color: rgb(var(--foreground-rgb));
   @apply bg-slate-700;
+
+  overscroll-behavior-y: none;
 }
 
 @layer utilities {

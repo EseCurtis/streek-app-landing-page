@@ -1,3 +1,4 @@
+import { ProductHuntButton } from "@/components/atoms/ProductHuntButton";
 import SimpleImage from "@/components/common/SImpleImage";
 import GlobalStore, { GlobalStoreReducer } from "@/store/Global";
 import { external_urls } from "@/utils/constants";
@@ -27,6 +28,7 @@ export const IconBubble: React.FC<IIconBubble> = ({
   return (
     <Link
       href={store && href ? href : "#"}
+      target="_blank"
       onClick={onClick}
       className={`${className} w-9 h-9 bg-slate-300/5 border border-slate-300/10 rounded-full items-center flex justify-center cursor-pointer text-accent hover:opacity-70 transition-all aspect-square`}
     >
@@ -52,6 +54,8 @@ const NavMisc: React.FC<INavMisc> = () => {
       </IconBubble>
 
       <div className="h-7 w-0.5 bg-slate-300/10 "></div>
+
+      <ProductHuntButton />
 
       <IconBubble
         className="md:hidden text-white border-transparent"
