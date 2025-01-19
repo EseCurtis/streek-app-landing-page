@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@vercel/analytics": "^1.4.1",
     "cmm-util": "^1.0.3",
     "framer-motion": "^11.2.4",
     "infinite-react-carousel": "^1.2.11",

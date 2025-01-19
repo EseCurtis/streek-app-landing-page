@@ -1,5 +1,6 @@
+import { Analytics } from "@vercel/analytics/next";
 import type { Metadata } from "next";
-import { Inter, Poppins } from "next/font/google";
+import { Poppins } from "next/font/google";
 import "./globals.css";
 
 const poppins = Poppins({
@@ -8,11 +9,14 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  icons: [{
-    url: "/logo-szn-inverted.png"
-  }],
+  icons: [
+    {
+      url: "/logo-szn-inverted.png"
+    }
+  ],
   title: "StreekApp - The ultimate habit tracker",
-  description: "Streekapp is a habit tracker used to track and monitor or cultivate new healthy habits or to stop certain bad habits"
+  description:
+    "Streekapp is a habit tracker used to track and monitor or cultivate new healthy habits or to stop certain bad habits"
 };
 
 export default function RootLayout({
@@ -27,6 +31,8 @@ export default function RootLayout({
       >
         {children}
       </body>
+
+      <Analytics />
     </html>
   );
 }
