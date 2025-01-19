@@ -14,6 +14,7 @@ export const metadata: Metadata = {
       url: "/logo-szn-inverted.png"
     }
   ],
+
   title: "StreekApp - The ultimate habit tracker",
   description:
     "Streekapp is a habit tracker used to track and monitor or cultivate new healthy habits or to stop certain bad habits"
